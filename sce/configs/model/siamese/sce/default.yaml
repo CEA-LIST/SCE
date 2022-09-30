@@ -1,0 +1,21 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: sce.models.siamese.SCEModel
+_recursive_: False
+coeff: 0.5
+initial_momentum: 0.999
+normalize_outputs: True
+num_devices: 1
+optimizer: ???
+predictor: null
+projector: null
+queue: ???
+scheduler_momentum: constant
+simulate_n_devices: 8
+shuffle_bn: True
+sym: False
+temp: 0.1
+temp_m: 0.04
+trunk: ???

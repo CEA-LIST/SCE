@@ -1,0 +1,71 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+defaults:
+  - /callback/model_checkpoint@callbacks.model_checkpoint: epoch
+  - /callback/learning_rate_monitor@callbacks.learning_rate_monitor: default
+  - /callback/progress_bar@callbacks.progress_bar: default
+  - /datamodule: imagenet
+  - /transform/linear_classifier_transform/train@datamodule.train.transform: imagenet
+  - /transform/linear_classifier_transform/val@datamodule.val.transform: imagenet
+  - /evaluation/linear_classifier/resnet/resnet50@model: imagenet
+  - /optimizer/factory/sgd@model.optimizer: default
+  - /scheduler/factory/multi_step_lr@model.optimizer.scheduler: default
+  - /seed/seed_everything@seed: default
+  - /trainer: gpu_ddp
+  - _self_
+  
+callbacks:
+  model_checkpoint: 
+    dirpath: linear_classifier_checkpoints
+    every_n_epochs: 1
+    monitor: val/acc_1
+    mode: max
+    save_top_k: 1
+    save_last: True
+  progress_bar:
+    refresh_rate: 500
+ckpt_path: null
+datamodule:
+  datadir: ${dir.data}
+  train:
+    loader:
+      drop_last: True
+      num_workers: 4
+      pin_memory: True
+    global_batch_size: 512
+  val:
+    loader:
+      drop_last: False
+      num_workers: 4
+      pin_memory: True
+    global_batch_size: 512
+model:
+  optimizer:
+    batch_size: ${...datamodule.train.global_batch_size}
+    exclude_wd_norm: False
+    exclude_wd_bias: False
+    initial_lr: 30.
+    scaler: null
+    scheduler:
+      params:
+        gamma: 0.1
+        milestones: [60, 80]
+seed:
+  seed: 42
+trainer:
+  gpus: 8
+  max_epochs: 100
+  log_every_n_steps: ${..callbacks.progress_bar.refresh_rate}
+dir:
+  data: data/
+  root: outputs/moco
+  exp: linear_classifier_batch_size${..datamodule.train.global_batch_size}
+  run: ${.root}/${.exp}
+
+hydra:
+  searchpath: 
+    - pkg://sce.configs
+  run:
+    dir: ${...dir.run}

@@ -1,0 +1,13 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: sce.schedulers.scheduler_factory
+_recursive_: False
+name: multi_step_lr
+params:
+  milestones: [60, 80]
+  gamma: 0.1
+  last_epoch: -1
+  verbose: False
+interval: epoch

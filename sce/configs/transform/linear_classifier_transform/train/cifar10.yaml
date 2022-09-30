@@ -1,0 +1,18 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: sce.transforms.LinearClassifierSmallTrainTransform
+_recursive_: True
+random_crop:
+  _target_: sce.transforms.RandomCrop
+  size: 32
+  padding: 4
+random_horizontal_flip:
+  _target_: sce.transforms.RandomHorizontalFlip
+  p: 0.5
+to_tensor:
+  _target_: sce.transforms.ToTensor
+normalize:
+  _target_: sce.transforms.Normalize
+  dataset: cifar10

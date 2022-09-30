@@ -1,0 +1,18 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: sce.optimizers.optimizer_factory
+_recursive_: False
+exclude_wd_norm: False
+exclude_wd_bias: False
+name: adam
+params:
+  weight_decay: 0.
+  betas: [0.9, 0.999]
+  eps: 1.e-8
+  amsgrad: False
+batch_size: null
+initial_lr: 0.003
+scaler: null
+scheduler: null

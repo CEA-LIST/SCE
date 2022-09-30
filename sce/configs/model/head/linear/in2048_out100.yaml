@@ -1,0 +1,12 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: sce.models.heads.LinearHead
+affine: True
+bias: True
+dropout: 0.
+dropout_inplace: True
+input_dim: 2048
+norm_layer: null
+output_dim: 100

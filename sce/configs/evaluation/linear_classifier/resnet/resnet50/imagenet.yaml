@@ -1,0 +1,12 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+defaults:
+  - /model/trunk/resnet/resnet50@trunk: no_fc
+  - /model/head/linear@classifier: in2048_out1000
+
+_target_: sce.evaluation.LinearClassifierEvaluation
+_recursive_: False
+optimizer: ???
+pretrained_trunk_path: ???

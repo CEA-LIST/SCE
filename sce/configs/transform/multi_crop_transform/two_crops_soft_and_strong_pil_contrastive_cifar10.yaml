@@ -1,0 +1,53 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: sce.transforms.MultiCropTransform
+_recursive_: True
+set_transforms:
+  - num_views: 1
+    transform:
+      _target_: sce.transforms.Compose
+      transforms:
+        - _target_: sce.transforms.RandomResizedCrop
+          interpolation: bilinear
+          ratio: [0.75, 1.333333]
+          size: 32
+          scale: [0.2, 1.0]
+        - _target_: sce.transforms.RandomHorizontalFlip
+          p: 0.5
+        - _target_: sce.transforms.ToTensor
+        - _target_: sce.transforms.Normalize
+          dataset: cifar10
+  - num_views: 1
+    transform:
+      _target_: sce.transforms.ContrastiveTransform
+      _recursive_: True
+      random_resized_crop:
+        _target_: sce.transforms.RandomResizedCrop
+        interpolation: bilinear
+        ratio: [0.75, 1.333333]
+        size: 32
+        scale: [0.2, 1.0]
+      random_color_jitter:
+        _target_: sce.transforms.RandomColorJitter
+        brightness: 0.4
+        contrast: 0.4
+        hue: 0.1
+        p: 0.8
+        saturation: 0.4
+      random_grayscale:
+        _target_: sce.transforms.RandomGrayscale
+        p: 0.2
+      random_gaussian_blur:
+        _target_: sce.transforms.RandomPILGaussianBlur
+        sigma: [0.1, 2.]
+        p: 0.5
+      random_horizontal_flip:
+        _target_: sce.transforms.RandomHorizontalFlip
+        p: 0.5
+      to_tensor:
+        _target_: sce.transforms.ToTensor
+      normalize:
+        _target_: sce.transforms.Normalize
+        dataset: cifar10

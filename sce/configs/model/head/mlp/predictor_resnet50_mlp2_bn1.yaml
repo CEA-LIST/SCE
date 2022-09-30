@@ -1,0 +1,19 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: sce.models.heads.MLPHead
+activation_inplace: True
+activation_layer: relu
+affine: True
+bias: False
+dropout: 0.
+dropout_inplace: True
+hidden_dims: [4096]
+input_dim: 256
+norm_layer: bn_1D
+num_layers: 2
+last_bias: False
+last_norm: False
+last_affine: False
+output_dim: 256

@@ -1,0 +1,14 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+defaults:
+  - /optimizer/factory/adam@optimizer: default
+
+_target_: sce.callbacks.OnlineEvaluator
+_recursive_: False
+classifier: ???
+optimizer:
+  initial_lr: 1.e-4
+input_name: h
+precision: 32

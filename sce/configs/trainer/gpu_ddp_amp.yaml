@@ -1,0 +1,13 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: pytorch_lightning.Trainer
+benchmark: True
+gpus: ???
+max_epochs: ???
+precision: 16
+strategy:
+  _target_: pytorch_lightning.plugins.DDPPlugin
+  find_unused_parameters: False
+sync_batchnorm: False

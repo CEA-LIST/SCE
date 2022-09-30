@@ -1,0 +1,46 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: sce.transforms.ApplyTransformsOnList
+_recursive_: True
+transforms:
+  - _target_: kornia.augmentation.container.AugmentationSequential
+    _recursive_: True
+    _args_:
+    - _target_: sce.transforms.GPURandomHorizontalFlip
+      p: 0.5
+    - _target_: sce.transforms.GPUNormalize
+      mean: 
+        _target_: torch.tensor
+        data: [0.485, 0.456, 0.406]
+      std: 
+        _target_: torch.tensor
+        data: [0.229, 0.224, 0.225]
+  - _target_: kornia.augmentation.container.AugmentationSequential
+    _recursive_: True
+    _args_:
+    - _target_: sce.transforms.GPURandomColorJitter
+      brightness: 0.4
+      contrast: 0.4
+      hue: 0.1
+      p: 0.8
+      saturation: 0.2
+    - _target_: sce.transforms.GPURandomGrayscale
+      p: 0.2
+    - _target_: sce.transforms.GPURandomGaussianBlur
+      kernel_size: [23, 23]
+      sigma: [0.1, 2.]
+      p: 0.5
+    - _target_: sce.transforms.GPURandomSolarize
+      p: 0.2
+      thresholds: 0.5
+    - _target_: sce.transforms.GPURandomHorizontalFlip
+      p: 0.5
+    - _target_: sce.transforms.GPUNormalize
+      mean: 
+        _target_: torch.tensor
+        data: [0.485, 0.456, 0.406]
+      std: 
+        _target_: torch.tensor
+        data: [0.229, 0.224, 0.225]

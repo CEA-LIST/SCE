@@ -1,0 +1,18 @@
+# copyright CEA-LIST/DIASI/SIALV/LVA (2022)
+# author CEA-LIST/DIASI/SIALV/LVA <julien.denize@cea.fr>
+# license CeCILL version 2.1
+
+_target_: sce.transforms.MultiCropTransform
+_recursive_: True
+set_transforms:
+  - num_views: 2
+    transform:
+      _target_: sce.transforms.Compose
+      _recursive_: True
+      transforms:
+        - _target_: sce.transforms.RandomResizedCrop
+          interpolation: bilinear
+          ratio: [0.75, 1.333333]
+          size: 224
+          scale: [0.2, 1.0]
+        - _target_: sce.transforms.ToTensor
