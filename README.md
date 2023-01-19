@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains the  official [Pytorch](https://pytorch.org/) implementation of [Similarity Contrastive Estimation for Self-Supervised Soft Contrastive Learning](https://arxiv.org/abs/2111.14585) (SCE) that has been accepted to **IEEE Winter Conference on Applications of Computer Vision (WACV) 2023**.
+This repository contains the  official [Pytorch](https://pytorch.org/) implementation of [Similarity Contrastive Estimation for Self-Supervised Soft Contrastive Learning](https://arxiv.org/abs/2111.14585) (SCE) that has been published in **IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) 2023**.
 
 
 It relies on several packages to optimize training and simplify the code such as:
@@ -377,11 +377,12 @@ See LICENSE for details.
 If you found our work useful, please consider citing us:
 
 ```
-@article{denize2021sce,
-  author    = {Julien Denize and Jaonary Rabarisoa and Astrid Orcesi and Romain H{\'e}rault and St{\'e}phane Canu},
-  title     = {Similarity Contrastive Estimation for Self-Supervised Soft Contrastive Learning},
-  journal   = {arXiv},
-  volume    = {abs/2111.14585v2},
-  year      = {2021},
+@InProceedings{Denize_2023_WACV,
+    author    = {Denize, Julien and Rabarisoa, Jaonary and Orcesi, Astrid and H\'erault, Romain and Canu, St\'ephane},
+    title     = {Similarity Contrastive Estimation for Self-Supervised Soft Contrastive Learning},
+    booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {January},
+    year      = {2023},
+    pages     = {2706-2716}
 }
 ```
