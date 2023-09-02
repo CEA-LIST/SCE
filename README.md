@@ -1,5 +1,10 @@
 # Similarity Contrastive Estimation for Self-Supervised Soft Contrastive Learning (WACV 2023)
 
+**News 2: A new repository containing the code of this paper as well as its extensions to video representation learning is available [here](https://github.com/juliendenize/eztorch).**
+
+**News 1: SCE has been extended to video and the paper is available [here](https://arxiv.org/abs/2212.11187).**
+
+
 ## Introduction
 
 This repository contains the  official [Pytorch](https://pytorch.org/) implementation of [Similarity Contrastive Estimation for Self-Supervised Soft Contrastive Learning](https://arxiv.org/abs/2111.14585) (SCE) that has been published in **IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) 2023**.
