@@ -7,8 +7,9 @@
 
 ## Introduction
 
-This repository contains the  official [Pytorch](https://pytorch.org/) implementation of [Similarity Contrastive Estimation for Self-Supervised Soft Contrastive Learning](https://arxiv.org/abs/2111.14585) (SCE) that has been published in **IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) 2023**.
+You should now use [eztorch](https://github.com/juliendenize/eztorch), this repo is deprecated. 
 
+This repository contains a [Pytorch](https://pytorch.org/) implementation of [Similarity Contrastive Estimation for Self-Supervised Soft Contrastive Learning](https://arxiv.org/abs/2111.14585) (SCE) that has been published in **IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) 2023**.
 
 It relies on several packages to optimize training and simplify the code such as:
 - [Hydra](https://hydra.cc/) for configuration.
@@ -167,7 +168,7 @@ srun --kill-on-bad-exit=1 python linear_classifier_evaluation.py \
 ```
 ## Usage: Transfer Learning
 
-For Transfer Learning evaluation we used code provided by several authors that we would like to thank for sharing their work. Below we redirect you to their github for every transfer we have done.
+For Transfer Learning evaluation we used code provided by several authors that we would like to thank for sharing their work. Below we redirect you to their GitHub for every transfer we have done.
 
 All evaluations are based on the multi-crop checkpoint.
 ### Linear classifier on other datasets 
